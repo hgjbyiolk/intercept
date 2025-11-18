@@ -1,0 +1,44 @@
+{
+  "name": "receipt-interceptor",
+  "version": "3.0.0",
+  "type": "module",
+  "description": "Production-grade receipt interceptor for POS systems",
+  "main": "setup-wizard.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder",
+    "build-win": "electron-builder --win portable",
+    "test": "node test-interceptor.js",
+    "test-api": "node test-api.js"
+  },
+  "build": {
+    "appId": "com.receiptinterceptor.app",
+    "productName": "ReceiptInterceptor",
+    "win": {
+      "target": [
+        {
+          "target": "portable",
+          "arch": ["x64"]
+        }
+      ],
+      "icon": "assets/icon.ico",
+      "requestedExecutionLevel": "requireAdministrator"
+    },
+    "portable": {
+      "artifactName": "ReceiptInterceptor-Setup.exe"
+    },
+    "files": [
+      "**/*",
+      "!dist/**/*",
+      "!node_modules/.cache/**/*"
+    ],
+    "directories": {
+      "output": "dist"
+    }
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "electron": "^28.0.0",
+    "electron-builder": "^24.9.1"
+  }
+}
